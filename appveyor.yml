@@ -4,6 +4,6 @@ install:
 build: false
 
 test_script:
-  - ps: $res = Invoke-Pester -CodeCoverage *.ps1 -Path ".\PSExample" -OutputFormat NUnitXml -OutputFile ".\TestResult.xml"
+  - ps: $res = Invoke-Pester -CodeCoverage *.ps1 -Path ".\PSExample" -OutputFormat NUnitXml -OutputFile ".\TestResult.xml" -PassThru 
  # - ps: . .\Tests\appveyor.pester.ps1 -Test
   - ps: if ($res.FailedCount -gt 0) { throw "$($res.FailedCount) tests failed."}
