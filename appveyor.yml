@@ -1,0 +1,8 @@
+install:
+  - cinst pester
+
+build: false
+
+test_script:
+  - ps: $res = Invoke-Pester -CodeCoverage *.ps1 -Path "$PSScriptRoot\PSExample" -OutputFormat NUnitXml -OutputFile "$PSScriptRoot\TestResult.xml"
+  - ps: if ($res.FailedCount -gt 0) { throw "$($res.FailedCount) tests failed."}
